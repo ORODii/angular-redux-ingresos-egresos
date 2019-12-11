@@ -60,8 +60,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary submit-btn btn-block" [disabled]="form.invalid">
-                                Crear cuenta
+                            <button class="btn btn-primary submit-btn btn-block" [disabled]="form.invalid || cargando">
+                                <span *ngIf="!cargando">Crear cuenta</span>
+                                <span *ngIf="cargando"><i class="fa fa-spin fa-sync"></i></span>
                             </button>
                         </div>
                         <div class="text-block text-center my-3">

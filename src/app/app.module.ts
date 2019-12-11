@@ -22,6 +22,10 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { environment } from '../environments/environment';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
@@ -38,6 +42,11 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
   imports: [
     BrowserModule,
     FormsModule,
+    StoreModule.forRoot(appReducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    }),
     SweetAlert2Module.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

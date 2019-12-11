@@ -1,3 +1,9 @@
+interface DataUser {
+    uid: string;
+    nombre: string;
+    email: string;
+}
+
 export class User {
     public uid: string;
 
@@ -5,9 +11,9 @@ export class User {
 
     public email: string;
 
-    constructor(uid: string, nombre: string, email: string) {
-        this.uid = uid;
-        this.nombre = nombre;
-        this.email = email;
+    constructor(user: DataUser) {
+        this.uid = user && user.uid || null;
+        this.nombre = user && user.nombre || null;
+        this.email = user && user.email || null;
     }
 }
