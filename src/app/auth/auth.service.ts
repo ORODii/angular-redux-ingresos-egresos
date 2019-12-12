@@ -12,13 +12,14 @@ import Swal from 'sweetalert2';
 import { User } from './user.model';
 import { AppState } from '../app.reducer';
 import { ActivarLoadingAction, DesactivarLoadingAction } from '../shared/ui.actions';
-import { SetUserAction } from './auth.actions';
+import { SetUserAction, UnsetUserAction } from './auth.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private userSubscription: Subscription;
+  private user: User;
 
   constructor(
     private angularAuth: AngularFireAuth,
@@ -36,10 +37,11 @@ export class AuthService {
           .subscribe((userDb: any) => {
             const newUser = new User(userDb);
             this.store.dispatch(new SetUserAction(newUser));
+            this.user = newUser;
           });
-      } else {
-        this.userSubscription.unsubscribe();
-        // this.store.dispatch(new SetUserAction(null));
+        } else {
+          this.userSubscription.unsubscribe();
+          this.user = null;
       }
     });
   }
@@ -101,5 +103,10 @@ export class AuthService {
   logout() {
     this.router.navigate(['/login']);
     this.angularAuth.auth.signOut();
+    this.store.dispatch(new UnsetUserAction());
+  }
+
+  getUser() {
+    return { ... this.user };
   }
 }
