@@ -6,9 +6,7 @@ interface DataUser {
 
 export class User {
     public uid: string;
-
     public nombre: string;
-
     public email: string;
 
     constructor(user: DataUser) {
