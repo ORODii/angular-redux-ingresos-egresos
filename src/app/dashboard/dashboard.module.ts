@@ -5,6 +5,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { IngresoEgresoComponent } from '../ingreso-egreso/ingreso-egreso.component';
 import { EstadisticaComponent } from '../ingreso-egreso/estadistica/estadistica.component';
 import { DetalleComponent } from '../ingreso-egreso/detalle/detalle.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DetalleComponent } from '../ingreso-egreso/detalle/detalle.component';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }
