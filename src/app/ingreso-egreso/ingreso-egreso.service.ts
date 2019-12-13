@@ -6,8 +6,8 @@ import { filter, map } from 'rxjs/operators';
 
 import { IngresoEgreso } from './ingreso-egreso.model';
 import { AuthService } from '../auth/auth.service';
-import { AppState } from '../app.reducer';
 import { SetItemsAction, UnsetItemsAction } from './ingreso-egreso.actions';
+import { IngresoEgresoState } from './ingreso-egreso.reducer';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class IngresoEgresoService {
   itemsSuscription: Subscription = new Subscription();
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<IngresoEgresoState>,
     private angularFirestore: AngularFirestore,
     private authService: AuthService
   ) { }

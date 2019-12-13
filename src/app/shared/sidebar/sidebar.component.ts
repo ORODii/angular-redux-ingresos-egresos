@@ -3,9 +3,9 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/auth/user.model';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import { filter } from 'rxjs/operators';
 import { IngresoEgresoService } from 'src/app/ingreso-egreso/ingreso-egreso.service';
+import { IngresoEgresoState } from 'src/app/ingreso-egreso/ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   user: User;
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<IngresoEgresoState>,
     private authService: AuthService,
     private ingresoEgresoService: IngresoEgresoService
   ) { }

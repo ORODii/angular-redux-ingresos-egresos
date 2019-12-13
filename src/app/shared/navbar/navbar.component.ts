@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { IngresoEgresoState } from 'src/app/ingreso-egreso/ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   userSubscription: Subscription = new Subscription();
   nombre: string;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<IngresoEgresoState>) { }
 
   ngOnInit() {
     this.userSubscription = this.store
